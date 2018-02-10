@@ -36,7 +36,7 @@ function activate(context) {
 
                     if (lineCommentsFound) {
                         //console.log(file.fsPath);
-                        outputChannel.appendLine("");
+                        outputChannel.show(true);
                         outputChannel.appendLine(file.fsPath);
 
                         lineCommentsFound.forEach(lc => {
