@@ -1,6 +1,6 @@
-# csharp-comment-remover README
+# csharp-comment-finder README
 
-This is the README for your extension "csharp-comment-remover". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "csharp-comment-finder". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
