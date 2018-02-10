@@ -6,6 +6,8 @@ const vscode = require('vscode');
 // your extension is activated the very first time the command is executed
 function activate(context) {
 
+    let outputChannel = vscode.window.createOutputChannel("csharp-comment-finder");
+
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "csharp-comment-finder" is now active!');
@@ -21,6 +23,8 @@ function activate(context) {
     });
 
     let findCommentsCommand = vscode.commands.registerCommand('extension.findComments', function () {
+        outputChannel.clear();
+
         vscode.workspace.findFiles("**/*.cs").then(files => {
             files.forEach(file => {
                 vscode.workspace.openTextDocument(file).then(textDocument => {
@@ -31,10 +35,13 @@ function activate(context) {
                     const lineCommentsFound = fileContent.match(lineCommentsRegex);
 
                     if (lineCommentsFound) {
-                        console.log(file.fsPath);
+                        //console.log(file.fsPath);
+                        outputChannel.appendLine("");
+                        outputChannel.appendLine(file.fsPath);
 
                         lineCommentsFound.forEach(lc => {
-                            console.log(lc);
+                            //console.log(lc);
+                            outputChannel.appendLine(lc);
                         });
                     }
                 })
